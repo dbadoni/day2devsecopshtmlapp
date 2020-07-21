@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: deepakwebapp1
+  name: deepakwebapp1 #name od deployment must be unique for all 
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: deepakwebapp1
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels: # tag on pods
+        app: deepakwebapp1
+    spec:
+      containers:
+      - image: dbadoni/devsecops:httpdv001
+        name: devsecops # name of container
+        imagePullPolicy: Always
+        resources: {}
+status: {}
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: null
+  labels:
+    app: deepakwebs1
+  name: deepakwebs1
+spec:
+  ports:
+  - name: 3453-80
+    port: 3453
+    protocol: TCP
+    targetPort: 80
+  selector:      # this will find the pod with their label
+    app: deepakwebapp1 # both key, value must match to pod labels
+  type: NodePort
+status:
+  loadBalancer: {}
