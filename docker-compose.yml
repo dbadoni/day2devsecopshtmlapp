@@ -1,0 +1,9 @@
+version: "3.8"
+services:
+ deepakhtmlapp:
+  image: httpd:deepakv002
+  container_name: deepakc1
+  restart: always
+  ports:
+   - "1313:80"
+  mem_limit: 300m
