@@ -2,6 +2,7 @@ version: "3.8"
 services:
  deepakhtmlapp:
   image: httpd:deepakv002
+  build . # as dockerfile is prsnet locally
   container_name: deepakc1
   restart: always
   ports:
